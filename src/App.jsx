@@ -250,15 +250,15 @@ function App() {
 
   return (
     <>
-      <div className="body bg-black h-screen flex  justify-center">
-        <div className="container w-1/3 h-auto border-l-2 border-r-2">
+      <div className=" h-screen flex  justify-center">
+        <div className=" w-1/3 h-auto border-gray-700">
           <div className="flex justify-between items-start border-b-2 border-gray-500 items-center justify-center">
             <img src="src/assets/Title.png" alt="blb" className='ml-6' />
             <img src="src/assets/Top-Tweets.svg" alt="blb" className='mr-6' />
           </div>
 
           <div className="flex">
-            <ImageAvatar clas="w-12 h-12 ml-2 mt-2" src="src/assets/lwahPXAA_400x400.jpg" />
+            <ImageAvatar className="w-14 h-14 ml-2 mt-2" src="src/assets/lwahPXAA_400x400.jpg" />
             <div className=" w-4/5 p-4">
               <input type="text" className="w-full bg-black text-white rounded-md p-2" placeholder="what's happening" />
             </div>

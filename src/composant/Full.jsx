@@ -35,9 +35,9 @@ function Full({data}) {
 
   return (
     <>
-      <div className='flex border border-gray-700'>
+      <div className='p-4 flex border border-gray-700'>
         <div>
-          <ImageAvatar className="w-14 h-14 ml-2 mt-2 w-full" src={data.author_avatar} />
+          <ImageAvatar className="w-11 h-11 ml-2 mt-2 w-full" src={data.author_avatar} />
         </div>
         <div className=" w-1/1 pt-4">
           <Tittle data = {data}/>
