@@ -1,5 +1,9 @@
 import { data } from 'autoprefixer'
-import React from 'react'
+import React, { useState } from 'react'
+// const [like,setLike]= useState(1)
+// function ajoutlike(setLike){
+//       setLike += 1
+// }
 
 export default function IconReaction(props) {
     return (

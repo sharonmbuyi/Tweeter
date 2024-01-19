@@ -1,6 +1,4 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+
 import './App.css'
 import React from 'react';
 import ImageAvatar from './composant/ImageAvatar';
@@ -11,6 +9,12 @@ import Tweet from './composant/tweet';
 import Icon from './composant/icon';
 import ImageTweet from './composant/imgTweet';
 import Full from './composant/Full';
+import IconReaction from './composant/IconReaction';
+import SideBar from './composant/sideBar';
+import Trends from './composant/Trends';
+import SideBars from './composant/sideBars';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function App() {
@@ -250,45 +254,103 @@ function App() {
 
   return (
     <>
-      <div className=" h-screen flex  justify-center">
-        <div className=" w-1/3 h-auto border-gray-700">
-          <div className="flex justify-between items-start border-b-2 border-gray-500 items-center justify-center">
-            <img src="src/assets/Title.png" alt="blb" className='ml-6' />
-            <img src="src/assets/Top-Tweets.svg" alt="blb" className='mr-6' />
-          </div>
+      <Router>
+        <div className=" h-screen flex  justify-center">
+          <SideBars />
+          <div className="w-1/3 h-auto border-gray-700">
+            <div>
+              <div className="flex justify-between items-start border-b-2 border-gray-500 flex border border-gray-700 items-center justify-center">
+                <img src="src/assets/Title.png" alt="blb" className='ml-6' />
+                <img src="src/assets/Top-Tweets.svg" alt="blb" className='mr-6' />
+              </div>
 
-          <div className="flex">
-            <ImageAvatar className="w-14 h-14 ml-2 mt-2" src="src/assets/lwahPXAA_400x400.jpg" />
-            <div className=" w-4/5 p-4">
-              <input type="text" className="w-full bg-black text-white rounded-md p-2" placeholder="what's happening" />
+              <div className=" flex border border-gray-700">
+                <ImageAvatar className="w-14 h-14 ml-2 mt-2" src="src/assets/lwahPXAA_400x400.jpg" />
+                <div className=" w-4/5 p-4">
+                  <input type="text" className="w-full bg-black text-white rounded-md p-2 outline-none" placeholder="what's happening" />
+                </div>
+              </div>
+
+              <div className="flex justify-between border-b-2 border-gray-500 items-center p-4 border border-gray-700">
+                <Avatar />
+                <div className="ml-auto pr-10">
+                  <button className=" bg-blue-800  text-gray-500 font-bold py-2 px-4 rounded-full">
+                    Tweet
+                  </button>
+                </div>
+              </div>
+              {
+                tab.map((data) => <Full key={data} data={data} />)
+              }
+
             </div>
           </div>
+          <div className=" w-1/5  h-auto border border-gray-700">
+            <div className=" flex w-4/5 p-4 " >
+              <div className='pt-2'>
+                <img src="src/assets/Search.png" alt="" />
+              </div>
+              <input type="text" className="w-full bg-black text-white rounded-md overflow-hidden p-2 outline-none   rounded-full" placeholder="serach Twitter" />
+            </div>
+            <div className='flex flex-col gap-6 bg-gray-900 rounded-md overflow-hidden m-4 p-2'>
+              <div className='flex justify-between items-start'>
+                <h3 className='text-white font-bold'>Trends for you</h3>
+                <img src="src/assets/Settings.png" />
+              </div>
+              <div>
+                <SideBar />
+                <SideBar />
+                <SideBar />
+                <SideBar />
+                <h3 className="text-blue-500 text-xl font-bold pt-8">Show more</h3>
+              </div>
 
-          <div className="flex justify-between border-b-2 border-gray-500 items-center p-4">
-            <Avatar />
-            <div className="ml-auto pr-10">
-              <button className=" bg-blue-800  text-gray-500 font-bold py-2 px-4 rounded-full">
-                Tweet
-              </button>
+            </div>
+            <div className='bg-gray-900 rounded-md m-4 p-2'>
+              <h3 className='text-white text-xl font-bold'>Who to follow</h3>
+
+              <div className='flex justify-between items-start'>
+                <div className='flex'>
+                  <ImageAvatar className="pt-4" src="Tweet-Profile-Photo.png" />
+                  <p className='text-white pt-6'>The new York time</p>
+
+                  <Verified className='' />
+                </div>
+                <button className=" bg-white mt-4 text-gray-900 font-bold py-2 px-4 rounded-full">
+                  follow
+                </button>
+              </div>
+              <div className='flex justify-between items-start'>
+                <div className='flex'>
+                  <ImageAvatar className="pt-4" src="Profile-Photo(1.5).png" />
+                  <p className='text-white pt-6'>CNN</p>
+
+                  <Verified className='' />
+                </div>
+                <button className=" bg-white mt-4 text-gray-900 font-bold py-2 px-4 rounded-full">
+                  follow
+                </button>
+              </div>
+              <div className='flex justify-between items-start'>
+                <div className='flex'>
+                  <ImageAvatar className="pt-4" src="Profile-Photo(1).png" />
+                  <p className='text-white pt-6'>Tweeter</p>
+
+                  <Verified className='' />
+                </div>
+                <button className=" bg-white mt-4 text-gray-900 font-bold py-2 px-4 rounded-full">
+                  follow
+                </button>
+              </div>
             </div>
           </div>
-
-          {/* {
-          tab.map((ful) =>  <Full Start={ful} />)
-          } */}
-        
-          {/* {tab.map((full) => (
-            <Full key={full.id} full={full} />
-          ))} */}
-
-          {
-            tab.map((data)=><Full key={data} data={data}/>)
-          }
-          
 
         </div>
-        
-      </div>
+        <Routes>
+            <Route path='/home/' element={<Trends />} />
+            <Route path='/home/profil' element={<Avatar />} />
+          </Routes>
+      </Router>
     </>
   )
 }
