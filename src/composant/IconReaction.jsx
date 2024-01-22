@@ -5,11 +5,11 @@ import React, { useState } from 'react'
 //       setLike += 1
 // }
 
-export default function IconReaction(props) {
+export default function IconReaction ({ src, className }) {
     return (
         <div className="flex gap-2">
-            <img src={props.src} alt= {props.alt} />
-            <h3 className="text-white">160k</h3>
+        <img src={src} alt="" className={`cursor-pointer ${className}`} />
+        <h3 className="text-white">160k</h3>
         </div>
     )
-}
+      };
